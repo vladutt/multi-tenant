@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
 
         if ($this->isHttpException($exception)) {
             if ($exception->getStatusCode() == 404) {
-                return redirect('page/error-404');
+                return redirect('/page/error-404');
             }
         }
 

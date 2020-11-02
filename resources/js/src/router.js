@@ -52,7 +52,7 @@ const router = new Router({
         // PAGES
         // =============================================================================
               {
-                path: '/',
+                path: '/page/login',
                 name: 'login',
                   meta: {
                       auth: false
@@ -68,7 +68,7 @@ const router = new Router({
                 component: () => import('./views/pages/Register.vue')
               },
               {
-                path: '/page/error-404',
+                path: 'page/error-404',
                 name: 'error-404',
                   meta: {
                       auth: false
@@ -80,7 +80,8 @@ const router = new Router({
         // Redirect to 404 page, if no match found
         {
             path: '*',
-            redirect: 'error-404'
+            redirect: 'page/error-404'
+
         }
     ],
 })
