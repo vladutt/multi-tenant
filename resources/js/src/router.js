@@ -52,7 +52,7 @@ const router = new Router({
         // PAGES
         // =============================================================================
               {
-                path: '/page/login',
+                path: '/',
                 name: 'login',
                   meta: {
                       auth: false
@@ -100,13 +100,6 @@ router.beforeEach( (to, from, next) => {
     }
 
     if ((to.name === 'login' || to.name === 'register') && window.Laravel.checkLogin) {
-        // this.$vs.notify({
-        //     title: 'Login Attempt',
-        //     text: 'You are already logged in!',
-        //     iconPack: 'feather',
-        //     icon: 'icon-alert-circle',
-        //     color: 'warning'
-        // })
         return router.push({name: 'home'}).catch(()=>{});
     }
 
