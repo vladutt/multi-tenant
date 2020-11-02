@@ -68,7 +68,7 @@ const router = new Router({
                 component: () => import('./views/pages/Register.vue')
               },
               {
-                path: 'page/error-404',
+                path: '/page/error-404',
                 name: 'error-404',
                   meta: {
                       auth: false

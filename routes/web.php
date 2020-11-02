@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function() {
+    return redirect('/page/login');
+});
 Route::get('/page/{any}', 'ApplicationController')->where('any', '.*');
 
 Route::post('register', 'Auth\RegisterController@register');
@@ -21,9 +23,3 @@ Route::get('logout', 'Auth\LoginController@logout');
 Route::post('login', 'Auth\LoginController@login');
 
 Route::post('create-project', 'ProjectController@create');
-
-Route::get('test', function() {
-dd(Database::orderBy('users', 'ASC')->first());
-    dd(\App\Models\Customer\Products::onProject('plmplmextra2')->get());
-
-});

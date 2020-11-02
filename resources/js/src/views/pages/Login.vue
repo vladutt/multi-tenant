@@ -52,9 +52,9 @@
                                     <!--                      <vs-checkbox v-model="checkbox_remember_me" class="mb-3">Remember Me</vs-checkbox>-->
                                     <!--                      <router-link to="">Forgot Password?</router-link>-->
                                     <!--                  </div>-->
-                                    <vs-button type="border" to="/page/register">Register</vs-button>
-                                    <vs-button class="float-right" @click="login">Login</vs-button>
 
+                                    <vs-button @click="login">Login</vs-button>
+                                    <vs-button class="float-right" type="border" to="/page/register">Register</vs-button>
                                     <vs-divider>OR</vs-divider>
 
                                     <div class="social-login-buttons flex flex-wrap items-center mt-4">

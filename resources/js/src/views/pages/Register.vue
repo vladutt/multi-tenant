@@ -26,7 +26,9 @@
                                         icon-no-border
                                         icon-pack="feather"
                                         label-placeholder="Name"
-                                        name="name"/>
+                                        name="name"
+                                        :danger="errors.name !== null"
+                                        :danger-text="errors.name"/>
 
                                     <vs-input
                                         v-model="email"
@@ -35,7 +37,10 @@
                                         icon-no-border
                                         icon-pack="feather"
                                         label-placeholder="Email"
-                                        name="email"/>
+                                        name="email"
+                                        :danger="errors.email !== null"
+                                        :danger-text="errors.email"/>
+
 
                                     <vs-input
                                         v-model="password"
@@ -45,7 +50,10 @@
                                         icon-pack="feather"
                                         label-placeholder="Password"
                                         name="password"
-                                        type="password"/>
+                                        type="password"
+                                        :danger="errors.password !== null"
+                                        :danger-text="errors.password"/>
+
                                     <vs-input
                                         v-model="password_confirmation"
                                         class="w-full mt-6 my-5"
@@ -56,8 +64,8 @@
                                         name="password_confirmation"
                                         type="password"/>
 
-                                    <vs-button type="border" @click="register">Register</vs-button>
-                                    <vs-button class="float-right" to="page/login">Login</vs-button>
+                                    <vs-button @click="register">Register</vs-button>
+                                    <vs-button class="float-right" type="border" to="/page/login">Login</vs-button>
 
                                     <vs-divider>OR</vs-divider>
 
@@ -127,6 +135,11 @@ export default {
             password: "",
             password_confirmation: "",
             checkbox_remember_me: false,
+            errors: {
+                name: null,
+                email: null,
+                password: null,
+            }
         }
     },
     methods: {
@@ -140,8 +153,15 @@ export default {
                 return this.$router.push({name: 'login'})
             })
                 .catch((error) => {
+                    let errors = error.response.data.errors;
+                    this.errors.name = this.errorHandler(errors.name)
+                    this.errors.email = this.errorHandler(errors.email)
+                    this.errors.password = this.errorHandler(errors.password)
                     alert('Error :(');
                 })
+        },
+        errorHandler(error) {
+            return JSON.parse(JSON.stringify(error))[0]
         }
     }
 }
