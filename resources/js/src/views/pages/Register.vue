@@ -154,10 +154,15 @@ export default {
             })
                 .catch((error) => {
                     let errors = error.response.data.errors;
-                    this.errors.name = this.errorHandler(errors.name)
-                    this.errors.email = this.errorHandler(errors.email)
-                    this.errors.password = this.errorHandler(errors.password)
-                    alert('Error :(');
+                    if (typeof errors.name !== 'undefined') {
+                        this.errors.name = this.errorHandler(errors.name)
+                    }
+                    if (typeof errors.email !== 'undefined') {
+                        this.errors.email = this.errorHandler(errors.email)
+                    }
+                    if (typeof errors.password !== 'undefined') {
+                        this.errors.password = this.errorHandler(errors.password)
+                    }
                 })
         },
         errorHandler(error) {
