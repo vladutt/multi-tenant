@@ -43,6 +43,13 @@ export default {
     },
     methods: {
         createProject() {
+            if (this.project.name.length <= 3) {
+                return this.$vs.notify({
+                    title: 'Create project',
+                    text: 'Minim 3 chars...',
+                    color: 'warning',
+                })
+            }
             this.$http.post('/create-project', {name: this.project.name})
                 .then((response) => {
                     this.products = response.data.data
